@@ -1,31 +1,32 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <img src="./assets/logo.png">
+    <div>
+      <p>
+        If Element is successfully added to this project, you'll see an
+        <code v-text="'<el-button>'"></code>
+        below
+      </p>
+      <el-button>el-button</el-button>
+      <el-button>haha</el-button>
     </div>
-    <router-view/>
   </div>
 </template>
 
-<style lang="scss">
+<script>
+
+export default {
+  name: 'app',
+  components: {
+  }
+}
+</script>
+
+<style>
 html, body, #app {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>
