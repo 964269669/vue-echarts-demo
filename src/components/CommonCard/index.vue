@@ -29,7 +29,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.common-card {
   .title {
     font-size: 12px;
     color: #999;
@@ -51,9 +50,9 @@ export default {
     font-size: 12px;
     color: #666;
   }
-}
 </style>
 <style lang="scss">
+.common-card {
   .emphasis {
     margin-left: 5px;
     color: #333;
@@ -75,3 +74,5 @@ export default {
     border-style: solid;
     margin: 3px 0 0 5px;
   }
+}
+</style>
