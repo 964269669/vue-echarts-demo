@@ -18,13 +18,11 @@
 </template>
 
 <script>
-import CommonCard from '../CommonCard'
+import commonCardMixin from '@/mixins/commonCardMixin'
 
 export default {
   name: 'totalSales',
-  components: {
-    CommonCard
-  },
+  mixins: [commonCardMixin],
   data () {
     return {}
   },
@@ -55,7 +53,13 @@ export default {
           opacity: 0
         },
         smooth: true
-      }]
+      }],
+      grid: {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+      }
     })
   },
   methods: {}
