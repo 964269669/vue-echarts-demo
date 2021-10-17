@@ -2,10 +2,12 @@
   <div class="total-users">
     <common-card title="今日交易用户数" value="81,014">
       <template>
-        <div
+        <v-chart :option="getOptions()" />
+        <!-- 原生echarts -->
+        <!-- <div
           id="today-users-chart"
           :style="{ width: '100%', height: '100%' }"
-        ></div>
+        ></div> -->
       </template>
       <template v-slot:footer>
         <span>退货率</span>
@@ -26,7 +28,8 @@ export default {
   },
   created () {},
   mounted () {
-    const chartDom = document.getElementById('today-users-chart')
+    // 原生echarts
+    /* const chartDom = document.getElementById('today-users-chart')
     const chart = this.$echarts.init(chartDom)
     chart.setOption({
       color: '#3398db',
@@ -93,9 +96,78 @@ export default {
         right: 0,
         bottom: 0
       }
-    })
+    }) */
   },
-  methods: {}
+  methods: {
+    getOptions () {
+      return {
+        color: '#3398db',
+        xAxis: {
+          type: 'category',
+          data: [
+            '00:00',
+            '01:00',
+            '02:00',
+            '03:00',
+            '04:00',
+            '05:00',
+            '06:00',
+            '07:00',
+            '08:00',
+            '09:00',
+            '10:00',
+            '12:00',
+            '13:00',
+            '14:00'
+          ],
+          show: false
+          // boundaryGap: false
+        }, // x轴
+        yAxis: {
+          show: false
+        }, // y轴
+        // 一个series就是一个图表
+        series: [
+          {
+            type: 'bar',
+            data: [
+              410,
+              82,
+              200,
+              334,
+              390,
+              330,
+              220,
+              150,
+              82,
+              200,
+              134,
+              290,
+              330,
+              150
+            ],
+            barWidth: '60%'
+            // areaStyle: {
+            //   color: 'purple'
+            // },
+            // lineStyle: {
+            //   width: 0
+            // },
+            // itemStyle: {
+            //   opacity: 0
+            // },
+            // smooth: true
+          }
+        ],
+        grid: {
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0
+        }
+      }
+    }
+  }
 }
 </script>
 

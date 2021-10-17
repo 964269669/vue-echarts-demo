@@ -1,5 +1,5 @@
 <template>
-  <v-chart :option="option"></v-chart>
+  <div class="sales-view">111</div>
 </template>
 
 <script>
@@ -7,18 +7,7 @@ export default {
   name: 'salesView',
   data () {
     return {
-      option: {
-        xAxis: {
-          type: 'category'
-        },
-        yAxis: {},
-        series: [
-          {
-            type: 'line',
-            data: [100, 200, 300]
-          }
-        ]
-      }
+
     }
   },
   created () {},
