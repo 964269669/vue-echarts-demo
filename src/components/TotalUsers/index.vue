@@ -39,7 +39,7 @@ export default {
       grid: {
         top: 0,
         left: 0,
-        right: 0,
+        right: '-50%',
         bottom: 0
       },
       xAxis: {
@@ -56,7 +56,7 @@ export default {
         {
           type: 'bar',
           stack: '总量', // 添加这个属性可以让多个成为一行
-          data: [200],
+          data: [100],
           barWidth: 10,
           itemStyle: {
             color: '#45c946'
@@ -65,7 +65,7 @@ export default {
         {
           type: 'bar',
           stack: '总量', // 添加这个属性可以让多个成为一行
-          data: [250],
+          data: [750],
           itemStyle: {
             color: '#eee'
           }
@@ -73,7 +73,7 @@ export default {
         {
           type: 'custom',
           stack: '总量', // 添加这个属性可以让多个成为一行
-          data: [200], // 这里的200和series中的第一保持一致
+          data: [100], // 这里的200和series中的第一保持一致
           renderItem: (params, api) => {
             const value = api.value(0) // 会获取本对象中data的第一个 200，
             const endPoint = api.coord([value, 0]) // 获取2第一个元素(200)的坐标
