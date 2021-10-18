@@ -34,7 +34,7 @@
       </template>
       <template>
         <div class="sales-view-chart-wrapper">
-          <v-chart :option="chartOption" />
+          <v-chart :options="chartOption" />
           <div class="sales-view-list">
             <div class="sales-view-title">排行榜</div>
             <div class="list-item-wrapper">

@@ -1,7 +1,7 @@
 <template>
   <common-card title="累计订单量" value="orderToday">
     <template>
-      <v-chart :option="getOptions()" />
+      <v-chart :options="getOptions()" />
 
       <!-- 原生echarts -->
       <!-- <div id="total-orders-chart" :style="{ width: '100%', height: '100%'}"></div> -->

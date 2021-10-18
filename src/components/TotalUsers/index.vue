@@ -2,7 +2,7 @@
   <div class="total-sales">
     <common-card title="累计用户数" value="1,087,503">
       <template>
-        <v-chart :option="getOptions()" />
+        <v-chart :options="getOptions()" />
 
         <!-- 原生echarts -->
         <!-- <div

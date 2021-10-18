@@ -1,5 +1,5 @@
 <template>
-  <v-chart :option="option"></v-chart>
+  <v-chart :options="option"></v-chart>
 </template>
 
 <script>

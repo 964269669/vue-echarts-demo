@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import BMap from '../views/BMapTest.vue'
+import BMap2 from '../views/BMapTest2.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/bmap',
     name: 'bmap',
     component: BMap
+  },
+  {
+    path: '/bmap2',
+    name: 'bmap2',
+    component: BMap2
   }
   // {
   //   path: '/about',

@@ -1,6 +1,6 @@
 <template>
   <div class="b-map-test">
-    <v-chart :option="option"></v-chart>
+    <v-chart :options="option"></v-chart>
   </div>
 </template>
 

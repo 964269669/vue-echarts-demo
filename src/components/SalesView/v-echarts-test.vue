@@ -1,5 +1,6 @@
 <template>
-  <ve-line :data="chartData"></ve-line>
+<div></div>
+  <!-- <ve-line :data="chartData"></ve-line> -->
 </template>
 
 <script>

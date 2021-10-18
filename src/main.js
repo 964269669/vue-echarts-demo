@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import './plugins/element.js'
 import './plugins/vcharts'
-import * as Echarts from 'echarts'
+import Echarts from 'echarts'
 import VueEcharts from 'vue-echarts'
 import './style/index.css'
 
