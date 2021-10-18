@@ -25,7 +25,7 @@ export default {
 .home {
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   padding: 20px;
   background: #eee;
 }

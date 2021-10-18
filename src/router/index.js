@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import BMap from '../views/BMapTest.vue'
-import BMap2 from '../views/BMapTest2.vue'
+import BMap2 from '../views/ve-bmapTest.vue'
 
 Vue.use(VueRouter)
 
