@@ -4,6 +4,6 @@ import Vue from 'vue'
 // Vue.component('ve-line', VEline)
 
 import VCharts from 'v-charts'
-// import 'v-charts/lib/style.css'
+import 'v-charts/lib/style.css'
 
 Vue.use(VCharts)
