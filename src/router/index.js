@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import BMap from '../views/BMapTest.vue'
 import BMap2 from '../views/ve-bmapTest.vue'
+import Liquidfill from '../views/LiQuidFill.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/bmap2',
     name: 'bmap2',
     component: BMap2
+  },
+  {
+    path: '/liquidfill',
+    name: 'liquidfill',
+    component: Liquidfill
   }
   // {
   //   path: '/about',
