@@ -439,7 +439,7 @@ export default {
   mounted () {
     this.option = {
       title: {
-        text: '慕课外卖销售数据大盘',
+        text: '外卖销售数据大盘',
         subtext: '销售趋势统计',
         sublink: 'https://www.baidu.com',
         left: 'center'
