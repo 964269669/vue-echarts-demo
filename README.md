@@ -84,7 +84,7 @@ export default {
 }
 </style>
 `
-
+>4. 使用v-charts完成水球图，不再需要安装echarts-liquidfill
 ### 结束
 
 
