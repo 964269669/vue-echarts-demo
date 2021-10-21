@@ -9,6 +9,7 @@
 
 <script>
 // @ is an alias to /src
+import Vue from 'vue'
 import TopView from '../components/TopView'
 import BottomView from '../components/BottomView'
 import MapView from '../components/MapView'
@@ -23,6 +24,7 @@ export default {
   },
   data () {
     return {
+      testA: { text: '来了老弟' },
       reportData: null,
       wordCloud: null,
       mapData: null
@@ -30,7 +32,11 @@ export default {
   },
   // 因为provide和inject是在beforeCreate和created中间执行的，所以当接口请求回来后，他们已经执行完了，导致数据传递不过去，解决办法就是provide中不直接传数据本身，而传一个方法，由这个方法返回数据；在inject中接受的时候接受的是一个方法，用computed中的变量返回这个方法即可
   provide () {
+    // 使用Vue.observable，只能在这里修改数据
+    this.testA = Vue.observable({ text: '又来了老妹儿' })
+    // console.log(37, this.testB)
     return {
+      testB: this.testA,
       getReportData: this.getReportData,
       getWordCloud: this.getWordCloud,
       getMapData: this.getMapData

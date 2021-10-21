@@ -124,5 +124,16 @@ export default {
       return format(v)
     }
   },
-  inject: ['getReportData', 'getWordCloud', 'getMapData']
+  // inject: ['testA', 'getReportData', 'getWordCloud', 'getMapData']
+  inject: {
+    testA: {
+      from: 'testB',
+      default () {
+        return { text: '默认值' }
+      }
+    },
+    getReportData: 'getReportData',
+    getWordCloud: 'getWordCloud',
+    getMapData: 'getMapData'
+  }
 }
