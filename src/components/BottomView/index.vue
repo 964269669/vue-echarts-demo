@@ -157,12 +157,13 @@ export default {
   methods: {
     onCategoryChange (type) {
       this.radioSelect = type
-      // this.renderPieChart()
+      this.renderPieChart()
     },
     onPageChange (page) {
       this.renderTable(page)
     },
-    renderPieChart () {
+    // 本文件中mock数据
+    /* renderPieChart () {
       const mockData = [
         {
           legengName: '粉面粥店',
@@ -285,7 +286,10 @@ export default {
           }
         }
       }
-      /* if (!this.category1.data1 || !this.category2.data1) {
+    }, */
+    // api数据
+    renderPieChart () {
+      if (!this.category1.data1 || !this.category2.data1) {
         return
       }
       let data
@@ -398,7 +402,7 @@ export default {
             return str
           }
         }
-      } */
+      }
     },
     renderTable (page) {
       this.tableData = this.totalData.slice(
