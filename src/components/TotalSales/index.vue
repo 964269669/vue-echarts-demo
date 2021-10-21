@@ -1,23 +1,23 @@
 <template>
   <div class="total-sales">
-    <common-card title="累计销售量" value="$222">
+    <common-card title="累计销售量" :value="salesToday">
       <template>
         <div class="compare-wrapper">
           <div class="compare">
             <span>日同比</span>
-            <span class="emphasis">7.33</span>
+            <span class="emphasis">{{salesGrowthLastDay}}</span>
             <div class="increase" />
           </div>
           <div class="compare">
             <span>月同比</span>
-            <span class="emphasis">66</span>
+            <span class="emphasis">{{salesGrowthLastMonth}}</span>
             <div class="decrease" />
           </div>
         </div>
       </template>
       <template v-slot:footer>
-        <span>昨日销售额度 </span>
-        <span class="money">￥300000</span>
+        <span>昨日销售额 {{testA.text}}</span>
+        <span class="money">{{salesLastDay}}</span>
       </template>
     </common-card>
   </div>

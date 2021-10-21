@@ -1,5 +1,5 @@
 <template>
-  <common-card title="累计订单量" value="orderToday">
+  <common-card title="累计订单量" :value="orderToday">
     <template>
       <v-chart :options="getOptions()" />
 
@@ -9,8 +9,7 @@
     <template v-slot:footer>
       <span>昨日订单量 </span>
       <span class="emphasis">
-        <!-- {{orderLastDay}} -->
-        111
+        {{orderLastDay}}
       </span>
     </template>
   </common-card>
@@ -18,10 +17,11 @@
 
 <script>
 import commonCardMixin from '@/mixins/commonCardMixin'
+import commonDatadMixin from '@/mixins/commonDataMixin'
 
 export default {
   name: 'totalSales',
-  mixins: [commonCardMixin],
+  mixins: [commonCardMixin, commonDatadMixin],
   data () {
     return {}
   },
@@ -95,23 +95,24 @@ export default {
         series: [
           {
             type: 'line',
-            data: [
-              620,
-              432,
-              220,
-              534,
-              790,
-              430,
-              220,
-              320,
-              532,
-              320,
-              834,
-              690,
-              530,
-              220,
-              620
-            ],
+            // data: [
+            //   620,
+            //   432,
+            //   220,
+            //   534,
+            //   790,
+            //   430,
+            //   220,
+            //   320,
+            //   532,
+            //   320,
+            //   834,
+            //   690,
+            //   530,
+            //   220,
+            //   620
+            // ],
+            data: this.orderTrend,
             areaStyle: {
               color: 'purple'
             },

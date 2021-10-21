@@ -1,6 +1,6 @@
 <template>
   <div class="total-sales">
-    <common-card title="累计用户数" value="1,087,503">
+    <common-card title="累计用户数" :value="userToday">
       <template>
         <v-chart :options="getOptions()" />
 
@@ -13,10 +13,10 @@
       <template v-slot:footer>
         <div class="total-users-footer">
           <span>日同比</span>
-          <span class="emphasis">8.73%</span>
+          <span class="emphasis">{{userGrowthLastDay}}</span>
           <div class="increase"></div>
           <span>月同比</span>
-          <span class="emphasis">35.91%</span>
+          <span class="emphasis">{{userGrowthLastMonth}}</span>
           <div class="decrease"></div>
         </div>
       </template>
@@ -26,10 +26,11 @@
 
 <script>
 import commonCardMixin from '@/mixins/commonCardMixin'
+import commonDatadMixin from '@/mixins/commonDataMixin'
 
 export default {
   name: 'totalSales',
-  mixins: [commonCardMixin],
+  mixins: [commonCardMixin, commonDatadMixin],
   data () {
     return {}
   },
@@ -124,6 +125,7 @@ export default {
   },
   methods: {
     getOptions () {
+      console.log(this.userLastMonth, this.userToday)
       return {
         grid: {
           top: 0,
@@ -143,18 +145,22 @@ export default {
         // 一个series就是一个图表
         series: [
           {
+            name: '上月平台用户数',
             type: 'bar',
             stack: '总量', // 添加这个属性可以让多个成为一行
-            data: [100],
+            // data: [100],
+            data: [this.userLastMonth],
             barWidth: 10,
             itemStyle: {
               color: '#45c946'
             }
           },
           {
+            name: '今日平台用户数',
             type: 'bar',
             stack: '总量', // 添加这个属性可以让多个成为一行
-            data: [750],
+            data: [this.userTodayNumber],
+            // data: [750],
             itemStyle: {
               color: '#eee'
             }
@@ -162,7 +168,8 @@ export default {
           {
             type: 'custom',
             stack: '总量', // 添加这个属性可以让多个成为一行
-            data: [100], // 这里的200和series中的第一保持一致
+            // data: [100], // 这里的100和series中的第一个保持一致
+            data: [this.userLastMonth], // 这里的100和series中的第一个保持一致
             renderItem: (params, api) => {
               const value = api.value(0) // 会获取本对象中data的第一个 200，
               const endPoint = api.coord([value, 0]) // 获取2第一个元素(200)的坐标
