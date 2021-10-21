@@ -16,7 +16,7 @@
               <div class="chart">
                 <div class="chart-title">搜索量</div>
                 <div class="chart-data">195,014</div>
-                <v-chart :options="searchUserOption" />
+                <v-chart :options="searchNumberOption" />
               </div>
             </div>
             <div class="table-wrapper">
@@ -29,7 +29,7 @@
               </el-table>
               <el-pagination
                 layout="prev, pager, next"
-                :total="4"
+                :total="total"
                 :page-size="pageSize"
                 background
                 @current-change="onPageChange"
@@ -67,7 +67,7 @@
 </template>
 
 <script>
-// import commonDataMixin from '../../mixins/commonDataMixin'
+import commonDatadMixin from '@/mixins/commonDataMixin'
 
 const colors = [
   '#8d7fec',
@@ -80,42 +80,42 @@ const colors = [
 
 export default {
   name: 'bottomView',
-  // mixins: [commonDataMixin],
+  mixins: [commonDatadMixin],
   data () {
     return {
       searchUserOption: {
-        xAxis: {
-          type: 'category',
-          boundaryGap: false
-        },
-        yAxis: {
-          show: false,
-          min: 0,
-          max: 300
-          // boundaryGap: false
-        },
-        series: [
-          {
-            type: 'line',
-            data: [100, 150, 200, 250, 200, 150, 100, 50, 100, 150],
-            areaStyle: {
-              color: 'rgba(95,187,255,.5)'
-            },
-            lineStyle: {
-              color: 'rgba(95,187,255,.5)'
-            },
-            itemStyle: {
-              opacity: 0
-            },
-            smooth: true
-          }
-        ],
-        grid: {
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0
-        }
+        // xAxis: {
+        //   type: 'category',
+        //   boundaryGap: false
+        // },
+        // yAxis: {
+        //   show: false,
+        //   min: 0,
+        //   max: 300
+        //   // boundaryGap: false
+        // },
+        // series: [
+        //   {
+        //     type: 'line',
+        //     data: [100, 150, 200, 250, 200, 150, 100, 50, 100, 150],
+        //     areaStyle: {
+        //       color: 'rgba(95,187,255,.5)'
+        //     },
+        //     lineStyle: {
+        //       color: 'rgba(95,187,255,.5)'
+        //     },
+        //     itemStyle: {
+        //       opacity: 0
+        //     },
+        //     smooth: true
+        //   }
+        // ],
+        // grid: {
+        //   top: 0,
+        //   left: 0,
+        //   right: 0,
+        //   bottom: 0
+        // }
       },
       searchNumberOption: {},
       tableData: [
@@ -147,7 +147,7 @@ export default {
       ],
       totalData: [],
       total: 0,
-      pageSize: 2,
+      pageSize: 4,
       userCount: 0,
       searchCount: 0,
       radioSelect: '品类',
@@ -160,7 +160,7 @@ export default {
       // this.renderPieChart()
     },
     onPageChange (page) {
-      // this.renderTable(page)
+      this.renderTable(page)
     },
     renderPieChart () {
       const mockData = [
@@ -454,28 +454,28 @@ export default {
     this.renderPieChart()
   },
   watch: {
-    // wordCloud () {
-    //   const totalData = []
-    //   this.wordCloud.forEach((item, index) => {
-    //     totalData.push({
-    //       id: index + 1,
-    //       rank: index + 1,
-    //       keyword: item.word,
-    //       count: item.count,
-    //       users: item.user,
-    //       range: `${((item.user / item.count) * 100).toFixed(2)}%`
-    //     })
-    //   })
-    //   this.totalData = totalData
-    //   this.total = this.totalData.length
-    //   this.renderTable(1)
-    //   this.userCount = totalData.reduce((s, i) => i.users + s, 0)
-    //   this.searchCount = totalData.reduce((s, i) => i.count + s, 0)
-    //   this.renderLineChart()
-    // },
-    // category1 () {
-    //   this.renderPieChart()
-    // }
+    wordCloud () {
+      const totalData = []
+      this.wordCloud.forEach((item, index) => {
+        totalData.push({
+          id: index + 1,
+          rank: index + 1,
+          keyword: item.word,
+          count: item.count,
+          users: item.user,
+          range: `${((item.user / item.count) * 100).toFixed(2)}%`
+        })
+      })
+      this.totalData = totalData
+      this.total = this.totalData.length
+      this.renderTable(1)
+      this.userCount = totalData.reduce((s, i) => i.users + s, 0)
+      this.searchCount = totalData.reduce((s, i) => i.count + s, 0)
+      this.renderLineChart()
+    },
+    category1 () {
+      this.renderPieChart()
+    }
   }
 }
 </script>
