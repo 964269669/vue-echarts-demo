@@ -14,10 +14,60 @@ import BottomView from '../components/BottomView'
 import MapView from '../components/MapView'
 import SalesView from '../components/SalesView'
 
+import { wordcloudLocal } from '@/api/'
+
 export default {
   name: 'home',
   components: {
     TopView, BottomView, MapView, SalesView
+  },
+  data () {
+    return {
+      reportData: null,
+      wordCloud: null,
+      mapData: null
+    }
+  },
+  // 因为provide和inject是在beforeCreate和created中间执行的，所以当接口请求回来后，他们已经执行完了，导致数据传递不过去，解决办法就是provide中不直接传数据本身，而传一个方法，由这个方法返回数据；在inject中接受的时候接受的是一个方法，用computed中的变量返回这个方法即可
+  provide () {
+    return {
+      getReportData: this.getReportData,
+      getWordCloud: this.getWordCloud,
+      getMapData: this.getMapData
+    }
+  },
+  created () {
+    wordcloudLocal().then(({ data }) => {
+      console.log('wordcloud success', data)
+      this.reportData = data.screenData
+      this.wordCloud = data.wordCloud
+      this.mapData = data.mapScatter
+    }).catch(err => {
+      console.log('wordcloud error', err)
+    })
+
+    // mapScatterLocal().then(res => {
+    //   console.log('mapScatterLocal success', res)
+    // }).catch(err => {
+    //   console.log('mapScatterLocal error', err)
+    // })
+
+    // screenDataLocal().then(res => {
+    //   console.log('screenDataLocal success', res)
+    // }).catch(err => {
+    //   console.log('screenDataLocal error', err)
+    // })
+  },
+  methods: {
+    getReportData () {
+      return this.reportData
+    },
+    getWordCloud () {
+      return this.wordCloud
+    },
+    getMapData () {
+      return this.mapData
+    }
   }
 }
 </script>

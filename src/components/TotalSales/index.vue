@@ -2,9 +2,17 @@
   <div class="total-sales">
     <common-card title="累计销售量" value="$222">
       <template>
-        <div class="compare">
-          <span>日同比</span>
-          <span>7.33</span>
+        <div class="compare-wrapper">
+          <div class="compare">
+            <span>日同比</span>
+            <span class="emphasis">7.33</span>
+            <div class="increase" />
+          </div>
+          <div class="compare">
+            <span>月同比</span>
+            <span class="emphasis">66</span>
+            <div class="decrease" />
+          </div>
         </div>
       </template>
       <template v-slot:footer>
@@ -18,30 +26,40 @@
 <script>
 // import CommonCard from '../CommonCard'
 import commonCardMixin from '@/mixins/commonCardMixin'
+import commonDatadMixin from '@/mixins/commonDataMixin'
 
 export default {
   name: 'totalSales',
-  mixins: [commonCardMixin],
-  components: {
-  },
+  mixins: [commonCardMixin, commonDatadMixin],
+  // inject: ['getReportData'],
   data () {
     return {}
   },
+  // computed: {
+  //   data () {
+  //     return this.getReportData()
+  //   }
+  // },
   created () {},
-  mounted () {},
+  mounted () {
+  },
   methods: {}
 }
 </script>
 
 <style lang="scss" scoped>
-  span { font-size: 12px }
-  .compare {
+  .compare-wrapper {
     height: 100%;
-    background-color: yellow;
-  }
-  .money {
-    margin-left: 5px;
-    color: #333;
-    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .compare {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      margin-top: 3px;
+      color: #666;
+    }
   }
 </style>
