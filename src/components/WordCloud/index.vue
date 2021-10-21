@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <ve-wordcloud :data="chartData" :settings="chartSettings" height="100%"></ve-wordcloud>
+    <ve-wordcloud
+      :data="chartData"
+      :settings="chartSettings"
+      height="100%"
+    ></ve-wordcloud>
   </div>
 </template>
 
@@ -59,7 +63,12 @@ export default {
         ]
       },
       chartSettings: {
-        color: ['rgba(97,216,0,.7)', 'rgba(204,178,26,.7)', 'rgba(245,166,35,.7)', 'rgba(156,13,113,.7)']
+        color: [
+          'rgba(97,216,0,.7)',
+          'rgba(204,178,26,.7)',
+          'rgba(245,166,35,.7)',
+          'rgba(156,13,113,.7)'
+        ]
       }
     }
   },
