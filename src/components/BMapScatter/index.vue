@@ -410,9 +410,10 @@ const convertData = (data) => {
   })
   return res
 }
-
+import commonDataMixin from '../../mixins/commonDataMixin'
 export default {
   name: 'bMapScatter',
+  mixins: [commonDataMixin],
   data () {
     return {
       chartData: {
@@ -614,6 +615,70 @@ export default {
         }
       ]
     }
+  },
+  watch: {
+    mapData() {
+        const { data, geo } = this.mapData
+        this.chartSeries = [
+          {
+            name: '销售额',
+            type: 'scatter',
+            coordinateSystem: 'bmap',
+            data: convertData(data, geo),
+            encode: {
+              value: 2
+            },
+            itemStyle: {
+              color: 'purple'
+            },
+            symbolSize: function (val) {
+              return val[2] / 10
+            },
+            label: {
+              show: false,
+              position: 'right',
+              formatter: function (v) {
+                return `${v.data.name} - ${v.data.value[2]}`
+              }
+            },
+            emphasis: {
+              label: {
+                show: true
+              }
+            }
+          },
+          {
+            name: 'Top 10',
+            type: 'effectScatter',
+            coordinateSystem: 'bmap',
+            data: convertData(data.sort(function (a, b) {
+              return b.value - a.value
+            }), geo).slice(0, 10),
+            symbolSize: function (val) {
+              return val[2] / 10
+            },
+            encode: {
+              value: 2
+            },
+            label: {
+              formatter: function (v) {
+                return `${v.data.name} - ${v.data.value[2]}`
+              },
+              position: 'right',
+              show: true
+            },
+            hoverAnimation: true,
+            rippleEffect: {
+              brushType: 'stroke'
+            },
+            itemStyle: {
+              color: 'purple',
+              shadowBlur: 10,
+              shadowColor: '#333'
+            }
+          }
+        ]
+      }
   },
   created () {},
   mounted () {},

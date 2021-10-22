@@ -5,12 +5,22 @@
 </template>
 
 <script>
+import commonDataMixin from '../../mixins/commonDataMixin'
 /* eslint-disable */
 function getColor(value) {
   // return 'rgba(97,216,0,.7)' // 0-0.5绿
   // return 'rgba(204,178,26,.7)' // 0.5-0.8土黄
   // return 'rgba(241,47,28,.7)'  //0.8+ 红
   // return '#c7c7cb' // 灰
+
+  return value > 0 && value <= 50
+    ? 'rgba(97,216,0,.7)'
+    : value > 50 && value <= 80
+    ? 'rgba(204,178,26,.7)'
+    : value > 80
+    ? 'rgba(241,47,28,.7)'
+    : '#c7c7cb'
+
   return value > 0 && value <= 0.5
     ? 'rgba(97,216,0,.7)'
     : value > 0.5 && value <= 0.8
@@ -21,18 +31,19 @@ function getColor(value) {
 }
 export default {
   name: 'li-quild-fill',
+  mixins: [commonDataMixin],
   data() {
     return {
       chartData: {
-        columns: ['title', 'percent'],
-        rows: [{ title: 'rate', percent: 0.4825 }]
+        // columns: ['title', 'percent'],
+        // rows: [{ title: 'rate', percent: 0.4825 }]
       },
       chartSettings: {}
     }
   },
   created() {},
   mounted() {
-    this.chartSettings = {
+    /* this.chartSettings = {
       seriesMap: {
         rate: {
           radius: '80%',
@@ -68,6 +79,59 @@ export default {
           },
           amplitude: 8, // 水波浪的振幅
           color: [getColor(this.chartData.rows[0].percent)]
+        }
+      }
+    } */
+  },
+  watch: {
+    userGrowthLastMonth() {
+      this.chartData = {
+        columns: ['title', 'percent'],
+        rows: [
+          {
+            title: '用户月同比增长',
+            percent: this.userGrowthLastMonth / 100
+          }
+        ]
+      }
+      this.chartSettings = {
+        seriesMap: {
+          '用户月同比增长': {
+            radius: '80%',
+            label: {
+              formatter: v => {
+                console.log(103, v.data.value)
+                // return `${(v.data.value * 100).toFixed(2)}%`
+                return `${(v.data.value * 100).toFixed(2)}%`
+              },
+              textStyle: {
+                fontSize: 36,
+                color: '#999',
+                fontWeight: 'normal'
+              },
+              position: ['50%', '50%'],
+              insideColor: '#fff'
+            },
+            outline: {
+              itemStyle: {
+                borderColor: '#aaa4a4',
+                borderWidth: 1,
+                color: 'none',
+                shadowBlur: 0,
+                shadowColor: '#fff'
+              },
+              borderDistance: 0
+            },
+            backgroundStyle: {
+              color: '#fff'
+            },
+            itemStyle: {
+              shadowBlur: 0,
+              shadowColor: '#fff'
+            },
+            amplitude: 8,
+            color: [getColor(this.chartData.rows[0].percent)]
+          }
         }
       }
     }

@@ -434,7 +434,7 @@
     "userLastDay": 1000000,
     "userLastMonth": 800000,
     "userGrowthLastDay": "135.31",
-    "userGrowthLastMonth": "194.14",
+    "userGrowthLastMonth": "64.14",
     "age": [
       { "key": "0-20", "value": 457726 },
       { "key": "20-30", "value": 658531 },

@@ -43,15 +43,17 @@ export default {
     }
   },
   created () {
-    wordcloudLocal().then(({ data }) => {
-      console.log('wordcloud success', data)
-      this.reportData = data.screenData
-      this.wordCloud = data.wordCloud
-      this.mapData = data.mapScatter
-    }).catch(err => {
-      console.log('wordcloud error', err)
-    })
-
+    const that = this
+    setTimeout(() => {
+      wordcloudLocal().then(({ data }) => {
+        console.log('wordcloud success', data)
+        that.reportData = data.screenData
+        that.wordCloud = data.wordCloud
+        that.mapData = data.mapScatter
+      }).catch(err => {
+        console.log('wordcloud error', err)
+      })
+    }, 2000)
     // mapScatterLocal().then(res => {
     //   console.log('mapScatterLocal success', res)
     // }).catch(err => {
