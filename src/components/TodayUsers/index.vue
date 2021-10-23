@@ -35,6 +35,7 @@ export default {
     const chart = this.$echarts.init(chartDom)
     chart.setOption({
       color: '#3398db',
+      tooltip: {},
       xAxis: {
         type: 'category',
         data: [
